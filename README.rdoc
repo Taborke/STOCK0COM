@@ -26,3 +26,6 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+http://glacial-eyrie-4756.herokuapp.com/ | git@heroku.com:glacial-eyrie-4756.git
+Git remote heroku added
