@@ -1,6 +1,6 @@
 class Stock
   include Mongoid::Document
-    include Mongoid::Timestamps
+  include Mongoid::Timestamps
 
   has_many :stock_histories
 
