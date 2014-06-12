@@ -14,7 +14,7 @@ end
 
 task :get_todays_quote => :environment do
     Stock.each do |qwote|
-        #qwote.get_historical_data(1)
+        qwote.get_historical_data(1)
         #data = Stock.pull_n_store(qwote.symbol)
         symbole = qwote.symbol
         data = YahooFinance.quotes([symbole], [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
