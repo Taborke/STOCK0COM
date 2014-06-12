@@ -32,7 +32,7 @@ task :distribution_day_notification => :environment do
             @weeks_ago = Time.now - (5*7*24*60*60) #5 weeks ago
             @past_dist_days = StockHistory.where(stock: @stocksymbol, dist_day: true)
             @past_dist_days.each do |day|
-                print day.trade_date
+                print day.trade_date.strftime("%m/%d/%Y")
             end
             UserMailer.dist_day_email(@past_dist_days).deliver
         end

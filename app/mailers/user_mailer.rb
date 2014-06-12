@@ -13,7 +13,8 @@ class UserMailer < ActionMailer::Base
      @stock = @dist_days.last.stock
      @stock = @stock.name
      @day_count = @dist_days.length #variable for dist day count
-     @emails = Users.all.email
-     mail(bcc: @emails, subject: "#{@stock} has had a distribution day")
+     @emails = Users.all
+     emails = @emails.collect(&:email).join(",")
+     mail(bcc: emails, subject: "#{@stock} has had a distribution day")
   end
 end
