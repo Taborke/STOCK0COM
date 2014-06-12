@@ -38,5 +38,5 @@ gem 'yahoo-finance'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'foundation-rails'
 gem 'rails_12factor', group: :production
