@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+ruby '2.1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 
@@ -27,7 +29,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'yahoo-finance', require: 'yahoo_finance'
 # Use unicorn as the app server
 # gem 'unicorn'
 
