@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>SCHTOCK.com</h1>
+    <p>
+      TODAY was a distribution day for <%= @stock %>
+      <%= @stock %> has had <%= @day_count %> distribution days in the past 5 weeks
+    </p>
+    <p>
+        <div class='small-2 columns'> Close </div>
+        <div class='small-2 columns'> Previous Close</div>
+        <div class='small-2 columns'> Percent Change </div>
+        <div class='small-2 columns'> Volume</div>
+        <div class='small-2 columns'> Volume Change</div>
+        <div class='small-2 columns'> Date </div>
+        
+    </p>
+    <p> 
+        <% @dist_days.each do |day| %>
+            <div class='small-2 columns'><%= day.close %></div>
+            <div class='small-2 columns'><%= day.previous_close %></div>
+            <div class='small-2 columns'><%= number_with_precision(day.percent_change, precision: 5) %></div>
+            <div class='small-2 columns'><%= day.volume %></div>
+            <div class='small-2 columns'><%= number_to_human(day.volume_change) %></div>
+            <div class='small-2 columns'><%= day.trade_date.strftime("%m/%d/%Y")  %></div>
+        <% end %>
+    </p>
+    <p>
+    If you would like to unsubscribe click here
+    </p>
+  </body>
+</html>
