@@ -10,7 +10,8 @@ class UserMailer < ActionMailer::Base
   def dist_day_email(days)
      #send to all users
      @dist_days = days #array of stock histories with dist days
-     @stock = @dist_days.stock.name
+     @stock = @dist_days.last.stock
+     @stock = @stock.name
      @day_count = @dist_days.length #variable for dist day count
      @emails = Users.all.email
      mail(bcc: @emails, subject: "#{@stock} has had a distribution day")
