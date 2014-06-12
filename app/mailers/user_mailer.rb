@@ -7,13 +7,13 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: 'Welcome to SCHTOCK0COM')
   end
 
-  def dist_day_email(days, emails)
+  def dist_day_email(days)
      #send to all users
      @dist_days = days #array of stock histories with dist days
      @stock = @dist_days.last.stock
      @stock = @stock.name
      @day_count = @dist_days.length #variable for dist day count
-	 @emails = emails
+     @emails = User.all
      users = @emails.collect(&:email).join(",")
      mail(bcc: users, subject: "#{@stock} has had a distribution day")
   end
