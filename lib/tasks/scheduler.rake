@@ -34,7 +34,8 @@ task :distribution_day_notification => :environment do
             @past_dist_days.each do |day|
                 print day.trade_date.strftime("%m/%d/%Y")
             end
-            UserMailer.dist_day_email(@past_dist_days).deliver
+            @emails = Users.all
+            UserMailer.dist_day_email(@past_dist_days, @emails).deliver
         end
    end
 end
