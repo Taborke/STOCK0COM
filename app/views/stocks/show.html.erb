@@ -1,0 +1,22 @@
+<div class='row'>
+    <h1><%= @stocksymbol.name %></h1>
+</div>
+<div class='row'>
+    <div class='small-2 columns'> Close </div>
+    <div class='small-2 columns'> Previous Close</div>
+    <div class='small-2 columns'> Percent Change </div>
+    <div class='small-2 columns'> Volume Change</div>
+    <div class='small-2 columns'> Date and Week </div>
+    <div class='small-2 columns'> Distribution Day</div>
+</div>
+
+<div class ='row'>
+    <% @displays.each do |f| %>
+    <div class='small-2 columns'><%= f.close %></div>
+    <div class='small-2 columns'><%= f.previous_close %></div>
+    <div class='small-2 columns'><%= number_with_precision(f.percent_change, precision: 5) %></div>
+    <div class='small-2 columns'><%= number_to_human(f.volume_change) %></div>
+    <div class='small-2 columns'><%= f.trade_date.strftime("%m/%d/%Y  %a-%V")  %></div>
+    <div class='small-2 columns'><%= f.dist_day %></div>
+    <% end %>
+</div>
