@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'yahoo-finance', require: 'yahoo_finance'
+gem 'yahoo-finance'
 # Use unicorn as the app server
 # gem 'unicorn'
 
