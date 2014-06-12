@@ -34,7 +34,7 @@ task :distribution_day_notification => :environment do
             @past_dist_days.each do |day|
                 print day
             end
-            #UserMailer.dist_day_email(@past_dist_days).deliver
+            UserMailer.dist_day_email(@past_dist_days).deliver
         end
    end
 end
