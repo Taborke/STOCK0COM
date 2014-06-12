@@ -25,7 +25,7 @@ end
 
 task :distribution_day_notification => :environment do
    Stock.each do |stocky|
-        @stocksymbol = stocky.symbol
+        @stocksymbol = stocky
         @current_day = StockHistory.where(stock: @stocksymbol).last
         #since I'll call the get_todays_quote task before this one the lastest stock entered should be todays
         if (@current_day.dist_day) then
