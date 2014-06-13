@@ -21,8 +21,8 @@ task :get_todays_quote => :environment do
     #     print data
         
     # end
-Stock.limit(1).todays_quote_create
-
+today = Stock.find(name: "NASDAQ")
+today.todays_quote_create
 
 end
 
