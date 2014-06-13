@@ -21,8 +21,8 @@ task :get_todays_quote => :environment do
     #     print data
         
     # end
-todays = Stock.where(name: "NASDAQ")
-todays.todays_quote_create
+@todays = Stock.where(name: "NASDAQ")
+@todays.todays_quote_create
 
 end
 
