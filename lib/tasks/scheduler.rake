@@ -21,7 +21,7 @@ task :get_todays_quote => :environment do
     #     print data
         
     # end
-Stock.find(1).todays_quote_create
+Stock.limit(1).todays_quote_create
 
 
 end
