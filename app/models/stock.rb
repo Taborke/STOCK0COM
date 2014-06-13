@@ -11,7 +11,7 @@ class Stock
 
   validates :symbol, presence: true
 
-  def get_historical_data(days)
+  def get_historical_data(days) 
     back_date = Time.now - (24*60*60*days)
     stock_histories = YahooFinance.historical_quotes(self.symbol, back_date, Time::now, {raw: false}).reverse
     stock_histories.each_with_index do |quote, index|
@@ -29,6 +29,26 @@ class Stock
             volume_change: volume_change,
             dist_day: Stock.distribution_day?(percent_change, volume_change))
         end
+  end
+
+  def todays_quote_create
+    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
+    @today = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
+    
+    Stock.each_with_index do |quote|
+      @yesterday = quote.previous_stock
+      today = StockHistory.find_or_create_by(stock: quote, trade_date: @today[index].trade_date, volume: @today[index].volume)
+      percent_change = Stock.calculate_percent_change(today, @yesterday)
+      volume_change = Stock.calculate_volume_change(today, @yesterday)
+      previous_close = @yesterday.close
+        stock_history.update_attributes(
+            volume: today.volume, 
+            close: today.close, 
+            percent_change: percent_change,
+            previous_close: previous_close,
+            volume_change: volume_change,
+            dist_day: Stock.distribution_day?(percent_change, volume_change))
+    end
   end
 
   def previous_stock
