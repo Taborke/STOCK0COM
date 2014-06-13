@@ -1,8 +1,14 @@
 class WelcomeController < ApplicationController
 
 	def index
+		
+		t = Time.now #this will tell you if the NYSE is still currently open
+		if (t.hour > 21 || t.hour < 14) || (t.wday == 0) || (t.wday == 6)
+			@market_closed = "Closed" 
+		else
+			@market_closed = "Open"
+		end
 
-	@market_closed = true if Time.now.hour > 21
       @stocks = []
       Stock.all.each do |stock|
 
