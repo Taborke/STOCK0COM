@@ -42,7 +42,7 @@ class Stock
       percent_change = Stock.calculate_percent_change(@today, @yesterday)
       volume_change = Stock.calculate_volume_change(@today, @yesterday)
       previous_close = @yesterday.close
-      today.update_attributes(
+      @today.update_attributes(
             volume: @today.volume, 
             close: @today.close, 
             percent_change: percent_change,
