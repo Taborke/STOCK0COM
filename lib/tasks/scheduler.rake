@@ -19,20 +19,7 @@ task :get_todays_quote => :environment do
     stock_index_symbols.each_with_index do |symbol, index|
         print "\n loading #{symbol}" 
         stock = Stock.where(symbol: symbol, name: stock_names[index]).first
-        @yesterday = stock.previous_stock
-        @today = StockHistory.find_or_create_by(stock: stock, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
-        print @today.trade_date
-    
-        percent_change = Stock.calculate_percent_change(@today, @yesterday)
-        volume_change = Stock.calculate_volume_change(@today, @yesterday)
-        previous_close = @yesterday.close
-        @today.update_attributes(
-            volume: @today.volume, 
-            close: @today.close, 
-            percent_change: percent_change,
-            previous_close: previous_close,
-            volume_change: volume_change,
-            dist_day: Stock.distribution_day?(percent_change, volume_change))
+        stock.quote_today(@todays_quote, index)
     end
 end
 

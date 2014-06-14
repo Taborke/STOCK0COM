@@ -31,8 +31,22 @@ class Stock
         end
   end
 
-  # def quote_today(todays_quote, index)
+  def quote_today(todays_quote, index)
+    @todays_quote = todays_quote
+    @yesterday = self.previous_stock
+        @today = StockHistory.find_or_create_by(stock: self, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
+        print @today.trade_date
     
+        percent_change = Stock.calculate_percent_change(@today, @yesterday)
+        volume_change = Stock.calculate_volume_change(@today, @yesterday)
+        previous_close = @yesterday.close
+        @today.update_attributes(
+            volume: @today.volume, 
+            close: @today.close, 
+            percent_change: percent_change,
+            previous_close: previous_close,
+            volume_change: volume_change,
+            dist_day: Stock.distribution_day?(percent_change, volume_change))
   #   @todays_quote = todays_quote
   #   @yesterday = quote.previous_stock
   #   @today = StockHistory.find_or_create_by(stock: quote, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
@@ -48,7 +62,7 @@ class Stock
   #           previous_close: previous_close,
   #           volume_change: volume_change,
   #           dist_day: quote.distribution_day?(percent_change, volume_change))
-  # end
+  end
 
   def previous_stock
     @previous_stock ||= StockHistory.where(stock: self).desc(:trade_date).first
