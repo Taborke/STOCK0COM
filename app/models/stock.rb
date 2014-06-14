@@ -39,8 +39,8 @@ class Stock
       @yesterday = quote.previous_stock
       today = StockHistory.find_or_create_by(stock: quote, trade_date: @today[index].trade_date, volume: @today[index].volume)
       print today
-      percent_change = Stock.calculate_percent_change(today, @yesterday)
-      volume_change = Stock.calculate_volume_change(today, @yesterday)
+      percent_change = quote.calculate_percent_change(today, @yesterday)
+      volume_change = quote.calculate_volume_change(today, @yesterday)
       previous_close = @yesterday.close
         stock_history.update_attributes(
             volume: today.volume, 
@@ -48,7 +48,7 @@ class Stock
             percent_change: percent_change,
             previous_close: previous_close,
             volume_change: volume_change,
-            dist_day: Stock.distribution_day?(percent_change, volume_change))
+            dist_day: quote.distribution_day?(percent_change, volume_change))
     end
   end
 
