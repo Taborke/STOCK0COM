@@ -31,13 +31,14 @@ class Stock
         end
   end
 
-  def todays_quote_create
+  def quote_today
     stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
     @today = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
     
     Stock.each_with_index do |quote|
       @yesterday = quote.previous_stock
       today = StockHistory.find_or_create_by(stock: quote, trade_date: @today[index].trade_date, volume: @today[index].volume)
+      print today
       percent_change = Stock.calculate_percent_change(today, @yesterday)
       volume_change = Stock.calculate_volume_change(today, @yesterday)
       previous_close = @yesterday.close
