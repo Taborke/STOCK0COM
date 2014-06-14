@@ -35,7 +35,7 @@ class Stock
     stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
     @today = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
     
-    Stock.each_with_index do |quote|
+    Stock.each_with_index do |quote, index|
       @yesterday = quote.previous_stock
       today = StockHistory.find_or_create_by(stock: quote, trade_date: @today[index].trade_date, volume: @today[index].volume)
       print today

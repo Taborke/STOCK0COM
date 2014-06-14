@@ -20,9 +20,8 @@ task :get_todays_quote => :environment do
     #     data = YahooFinance.quotes([symbole], [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
     #     print data
         
-    # end
-stock_index = "%5EIXIC"   
-todays = Stock.where(symbol: stock_index).first
+    # end 
+todays = Stock.where(name: "NASDAQ").first
 todays.quote_today
 
 end
