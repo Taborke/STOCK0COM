@@ -53,7 +53,7 @@ class Stock
   end
 
   def previous_stock
-    @previous_stock ||= Stock.where(symbol: symbol).trade_date_desc.first
+    @previous_stock ||= StockHistory.where(symbol: symbol).trade_date_desc.first
   end
 
   def self.calculate_percent_change(quote, previous_quote)
