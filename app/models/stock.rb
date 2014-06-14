@@ -38,7 +38,7 @@ class Stock
     Stock.each_with_index do |quote, index|
       @yesterday = quote.previous_stock
       @today = StockHistory.find_or_create_by(stock: quote, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
-      print today
+      print @today
       percent_change = Stock.calculate_percent_change(@today, @yesterday)
       volume_change = Stock.calculate_volume_change(@today, @yesterday)
       previous_close = @yesterday.close
