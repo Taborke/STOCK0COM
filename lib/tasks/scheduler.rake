@@ -21,7 +21,7 @@ task :get_todays_quote => :environment do
         stock = Stock.where(symbol: symbol, name: stock_names[index]).first
         @yesterday = stock.previous_stock
         @today = StockHistory.find_or_create_by(stock: stock, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
-        print @today
+        print @today.trade_date
     
         percent_change = Stock.calculate_percent_change(@today, @yesterday)
         volume_change = Stock.calculate_volume_change(@today, @yesterday)
