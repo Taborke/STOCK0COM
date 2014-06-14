@@ -22,8 +22,8 @@ task :get_todays_quote => :environment do
         
     # end
 stock_index = "%5EIXIC"   
-todays = Stock.where(symbol: stock_index)
-todays.todays_quote_create
+todays = Stock.where(symbol: stock_index).first
+todays.quote_today
 
 end
 
