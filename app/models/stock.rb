@@ -31,26 +31,24 @@ class Stock
         end
   end
 
-  def quote_today
-    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
-    @todays_quote = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
+  # def quote_today(todays_quote, index)
     
-    Stock.each_with_index do |quote, index|
-      @yesterday = quote.previous_stock
-      @today = StockHistory.find_or_create_by(stock: quote, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
-      print @today
-      percent_change = Stock.calculate_percent_change(@today, @yesterday)
-      volume_change = Stock.calculate_volume_change(@today, @yesterday)
-      previous_close = @yesterday.close
-      @today.update_attributes(
-            volume: @today.volume, 
-            close: @today.close, 
-            percent_change: percent_change,
-            previous_close: previous_close,
-            volume_change: volume_change,
-            dist_day: quote.distribution_day?(percent_change, volume_change))
-    end
-  end
+  #   @todays_quote = todays_quote
+  #   @yesterday = quote.previous_stock
+  #   @today = StockHistory.find_or_create_by(stock: quote, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
+  #   print @today
+    
+  #   percent_change = Stock.calculate_percent_change(@today, @yesterday)
+  #   volume_change = Stock.calculate_volume_change(@today, @yesterday)
+  #   previous_close = @yesterday.close
+  #   @today.update_attributes(
+  #           volume: @today.volume, 
+  #           close: @today.close, 
+  #           percent_change: percent_change,
+  #           previous_close: previous_close,
+  #           volume_change: volume_change,
+  #           dist_day: quote.distribution_day?(percent_change, volume_change))
+  # end
 
   def previous_stock
     @previous_stock ||= StockHistory.where(stock: self).desc(:trade_date).first

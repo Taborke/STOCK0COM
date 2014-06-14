@@ -13,17 +13,27 @@ end
 
 
 task :get_todays_quote => :environment do
-    # Stock.each do |qwote|
-    #     qwote.get_historical_data(1)
-    #     #data = Stock.pull_n_store(qwote.symbol)
-    #     symbole = qwote.symbol
-    #     data = YahooFinance.quotes([symbole], [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
-    #     print data
-        
-    # end 
-todays = Stock.where(name: "NASDAQ").first
-todays.quote_today
-
+    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
+    stock_names = ["NASDAQ", "S&P", "DOW"]
+    @todays_quote = YahooFinance.quotes([stock_index_symbols], [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
+    stock_index_symbols.each_with_index do |symbol, index|
+        print "\n loading #{symbol}" 
+        stock = Stock.where(symbol: symbol, name: stock_names[index]).first
+        @yesterday = stock.previous_stock
+        @today = StockHistory.find_or_create_by(stock: stock, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
+        print @today
+    
+        percent_change = stock.calculate_percent_change(@today, @yesterday)
+        volume_change = stock.calculate_volume_change(@today, @yesterday)
+        previous_close = @yesterday.close
+        @today.update_attributes(
+            volume: @today.volume, 
+            close: @today.close, 
+            percent_change: percent_change,
+            previous_close: previous_close,
+            volume_change: volume_change,
+            dist_day: stock.distribution_day?(percent_change, volume_change))
+    end
 end
 
 task :distribution_day_notification => :environment do
