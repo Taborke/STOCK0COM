@@ -18,7 +18,10 @@ task :get_todays_quote => :environment do
     @todays_quote = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
     stock_index_symbols.each_with_index do |symbol, index|
         print "\n loading #{symbol}"
-        print @todays_quote[index].last_trade_date 
+        print @todays_quote[index].volume
+        print @todays_quote[index].close
+        print @todays_quote[index].previous_close
+        print @todays_quote[index].last_trade_date
         stock = Stock.where(symbol: symbol, name: stock_names[index]).first
         stock.quote_today(@todays_quote, index)
     end
