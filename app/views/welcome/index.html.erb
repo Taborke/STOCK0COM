@@ -1,6 +1,6 @@
 <div class='row'>The time is now <%= Time.now.strftime("%H:%M:%S %^a-%d %m/%Y") %></div>
 <div class='row'>The NYSE is currently <%= @market_closed %></div>
-</br>
+<br />
 <div class='row'>
     <div class='small-2 columns'> Stock Index </div>
     <div class='small-2 columns'> Close </div>
@@ -34,7 +34,8 @@
 			<br />
 		</div>    
 		<div class='small-2 columns'>
-			<font color="green">
+			<% dday = "green" %>
+			<font color="#{dday}">
 			<%= stock_history.dist_day %>
 			</font>
 			<br />
