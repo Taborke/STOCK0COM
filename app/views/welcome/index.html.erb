@@ -34,7 +34,11 @@
 			<br />
 		</div>    
 		<div class='small-2 columns'>
+			<% if (stock_history.dist_day) @color = "green" %>
+			<font color="#{@color}">
 			<%= stock_history.dist_day %>
+			<% end %>
+		</font>
 			<br />
 		</div>
 	</div>
