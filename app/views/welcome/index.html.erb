@@ -34,7 +34,11 @@
 			<br />
 		</div>    
 		<div class='small-2 columns'>
-			<% dday = "green" %>
+			<% if (stock_history.dist_day) 
+					dday = "green" 
+				else 
+					dday = "black" 
+				end %>
 			<font color="#{dday}">
 			<%= stock_history.dist_day %>
 			</font>
