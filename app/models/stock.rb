@@ -34,8 +34,8 @@ class Stock
   def quote_today(todays_quote, index)
     @todays_quote = todays_quote
     yesterday = StockHistory.where(stock: self).desc(:trade_date).first
-    today = StockHistory.find_or_create_by(stock: self, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
-    
+    today = StockHistory.find_or_create_by(stock: self, trade_date: @todays_quote[index].trade_date)
+    #volume: @todays_quote[index].volume
     print today.trade_date
     print yesterday
     print today
