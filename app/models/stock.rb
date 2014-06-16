@@ -33,7 +33,7 @@ class Stock
 
   def quote_today(todays_quote, index)
     @todays_quote = todays_quote
-    yesterday = Stock.previous_stock
+    yesterday = StockHistory.where(stock: self).desc(:trade_date).first
     today = StockHistory.find_or_create_by(stock: self, trade_date: @todays_quote[index].trade_date, volume: @todays_quote[index].volume)
     
     print today.trade_date
@@ -48,10 +48,6 @@ class Stock
         previous_close: previous_close,
         volume_change: volume_change,
         dist_day: Stock.distribution_day?(percent_change, volume_change))
-  end
-
-  def previous_stock
-    previous_stock ||= StockHistory.where(stock: self).desc(:trade_date).first
   end
 
   def self.calculate_percent_change(quote, previous_quote)
