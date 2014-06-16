@@ -13,8 +13,8 @@ end
 
 
 task :get_todays_quote => :environment do
-    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA"]
-    stock_names = ["NASDAQ", "S&P", "DOW"]
+    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA", "%5ENDX"]
+    stock_names = ["NASDAQ", "S&P", "DOW", "NAS100"]
     @todays_quote = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent])
     stock_index_symbols.each_with_index do |symbol, index|
         print "\n loading #{symbol} \n"
