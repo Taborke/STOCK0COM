@@ -50,7 +50,7 @@ class Stock
         dist_day: Stock.distribution_day?(percent_change, volume_change))
   end
 
-  def self.previous_stock
+  def previous_stock
     previous_stock ||= StockHistory.where(stock: self).desc(:trade_date).first
   end
 
