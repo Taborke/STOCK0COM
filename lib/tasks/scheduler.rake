@@ -15,20 +15,26 @@ end
 task :get_todays_quote => :environment do
     stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA", "%5ENDX"]
     stock_names = ["NASDAQ", "S&P", "DOW", "NAS100"]
-    @todays_quote = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent, :average_daily_volume])
     stock_index_symbols.each_with_index do |symbol, index|
-        print "\n loading #{symbol} \n"
-        print @todays_quote[index].average_daily_volume
-        print " avg volume \n"
-        print @todays_quote[index].close
-        print " close \n"
-        print @todays_quote[index].previous_close
-        print " prev close \n" 
-        print @todays_quote[index].last_trade_date
-        print "last date \n"
-        stock = Stock.where(symbol: symbol, name: stock_names[index]).first
-        stock.quote_today(@todays_quote, index)
+        print "\n loading #{symbol}" 
+        stock = Stock.find_or_create_by(symbol: symbol, name: stock_names[index])
+        stock.get_historical_data(1)
     end
+
+        # @todays_quote = YahooFinance.quotes(stock_index_symbols, [:volume, :close, :previous_close, :last_trade_date, :change_in_percent, :average_daily_volume])
+    # stock_index_symbols.each_with_index do |symbol, index|
+    #     print "\n loading #{symbol} \n"
+    #     print @todays_quote[index].average_daily_volume
+    #     print " avg volume \n"
+    #     print @todays_quote[index].close
+    #     print " close \n"
+    #     print @todays_quote[index].previous_close
+    #     print " prev close \n" 
+    #     print @todays_quote[index].last_trade_date
+    #     print "last date \n"
+    #     stock = Stock.where(symbol: symbol, name: stock_names[index]).first
+    #     stock.quote_today(@todays_quote, index)
+    # end
 end
 
 task :distribution_day_notification => :environment do
