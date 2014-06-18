@@ -1,5 +1,5 @@
 <div class='row'>
-    <h1><%= @stocksymbol.name %></h1>
+    <h1><%= link_to @stocksymbol.name, root_path %></h1>
 </div>
 <div class='row'>
     <div class='small-2 columns'> Close </div>
@@ -17,6 +17,13 @@
     <div class='small-2 columns'><%= number_with_precision(f.percent_change, precision: 5) %></div>
     <div class='small-2 columns'><%= number_to_human(f.volume_change) %></div>
     <div class='small-2 columns'><%= f.trade_date.strftime("%m/%d/%Y  %a-%V")  %></div>
+    <% if (f.dist_day == true) then %>
+        <% colr = "green" %>
+    <% else %>
+        <% colr = "black" %>
+    <% end %>
+    <font color="#{colr}">
     <div class='small-2 columns'><%= f.dist_day %></div>
+    </font>
     <% end %>
 </div>

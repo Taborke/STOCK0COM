@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
 			@market_closed = "Open"
 		end
 		@stocks = []
+        @dday = "black"
         Stock.all.each do |stock|
 
         last_stock = StockHistory.where(stock: stock).asc(:trade_date).last
