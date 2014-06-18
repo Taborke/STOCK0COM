@@ -9,9 +9,9 @@ class WelcomeController < ApplicationController
 			@market_closed = "Open"
 		end
 		if (stock_history.dist_day === true) 
-					dday = "green" 
-				else 
-					dday = "black" 
+			@dday = "green" 
+		else 
+			@dday = "black" 
 		end 
 		@stocks = []
         Stock.all.each do |stock|
