@@ -8,9 +8,13 @@ class WelcomeController < ApplicationController
 		else
 			@market_closed = "Open"
 		end
-
-      @stocks = []
-      Stock.all.each do |stock|
+		if (stock_history.dist_day === true) 
+					dday = "green" 
+				else 
+					dday = "black" 
+		end 
+		@stocks = []
+        Stock.all.each do |stock|
 
         last_stock = StockHistory.where(stock: stock).asc(:trade_date).last
         unless last_stock.nil?
