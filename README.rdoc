@@ -1,31 +1,32 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is web app for investors that are too busy to bother checking individual stocks
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The program will allow users to sign up through email and be notified when there is a 'Distribution Day'
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Ruby version 2.1.1
+* Rails Version 4.1
+
+    Using MongoDB
+        and the 
+    Yahoo Finance API
+
+The DB will hold stock information about the Stock Indices, such as NASDAQ, DOW, S&P.
+Distribution days occur when there is a negative percent change of greater than 3%
+and the volume traded is one stock higher than yesterday.
+A large number of these days can signify a follow through day at a market bottom.
+
+<tt>TINY TEXT/tt>.
+
+Currently Hosted with HEROKU!
 
 http://glacial-eyrie-4756.herokuapp.com/ | git@heroku.com:glacial-eyrie-4756.git
-Git remote heroku added
+
+Citations:
+
+Yahoo-Finance Gem
+	https://github.com/herval/yahoo-finance
+
+Unsubscribe Link 
+	http://ngauthier.com/2013/01/rails-unsubscribe-with-active-support-message-verifier.html

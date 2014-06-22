@@ -64,6 +64,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    if user = User.read_access_token(params[:signature])
+      user.update_attribute :email_opt_in, false
+      render text: "You have been unsubscribed"
+    else
+      render text: "Invalid Link"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
