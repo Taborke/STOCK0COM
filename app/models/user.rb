@@ -1,7 +1,6 @@
 class User
   include Mongoid::Document
   field :email, type: String
-  field :login, type: String
 
    # Access token for a user
   def access_token
