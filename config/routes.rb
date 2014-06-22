@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'users#unsubscribe', as: 'unsubscribe'
+  get 'user#unsubscribe', as: 'unsubscribe'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
