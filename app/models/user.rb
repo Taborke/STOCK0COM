@@ -9,7 +9,7 @@ class User
 
   # Verifier based on our application secret
   def self.verifier
-    ActiveSupport::MessageVerifier.new(MyRailsApp::Application.config.secret_token)
+    ActiveSupport::MessageVerifier.new(STOCK0COM::Application.config.secret_token)
   end
 
   # Get a user from a token
