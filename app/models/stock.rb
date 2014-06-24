@@ -1,4 +1,4 @@
-class Stock < ActiveRecord::Base
+class Stock
   include Mongoid::Document
   include Mongoid::Timestamps
 
