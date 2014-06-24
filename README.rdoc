@@ -17,7 +17,7 @@ Distribution days occur when there is a negative percent change of greater than 
 and the volume traded is one stock higher than yesterday.
 A large number of these days can signify a follow through day at a market bottom.
 
-<tt>TINY TEXT/tt>.
+<tt>TINY TEXT</tt>.
 
 Currently Hosted with HEROKU!
 
