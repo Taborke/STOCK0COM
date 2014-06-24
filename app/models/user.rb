@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User
   include Mongoid::Document
   field :email, type: String
 
