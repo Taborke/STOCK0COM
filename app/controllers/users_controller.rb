@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  after_create :mail_out
+  after_action :mail_out, only: [:create]
   # GET /users
   # GET /users.json
   def index
