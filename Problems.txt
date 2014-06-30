@@ -1,0 +1,30 @@
+Problems
+
+
+ Started POST "/users?method=get" for 24.207.128.226 at 2014-06-30 22:50:52 +0000
+2014-06-30T22:50:52.203124+00:00 app[web.1]:     14:     If you would like to unsubscribe click here
+2014-06-30T22:50:52.203127+00:00 app[web.1]:     16:     
+2014-06-30T22:50:52.203125+00:00 app[web.1]:     15: <%= link_to "Unsubscribe", unsubscribe_url(@user.access_token) %>
+2014-06-30T22:50:52.201267+00:00 app[web.1]:   Rendered user_mailer/welcome_email.html.erb (1.2ms)
+2014-06-30T22:50:52.203135+00:00 app[web.1]:   app/views/user_mailer/welcome_email.html.erb:15:in `_app_views_user_mailer_welcome_email_html_erb___987457061252839984_70210290709400'
+2014-06-30T22:50:52.152905+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"AtnOe0Hlt5pu182sUYCsFsr3vpddKqx0LDgamudBH80=", "user"=>{"email"=>"kevin.tabor@gmail.com"}, "method"=>"get"}
+2014-06-30T22:50:52.203121+00:00 app[web.1]:     12:     <p>Thanks for joining and have a great day!</p>
+2014-06-30T22:50:52.203128+00:00 app[web.1]:     17:     </p>
+2014-06-30T22:50:52.203133+00:00 app[web.1]:   app/models/user.rb:7:in `access_token'
+2014-06-30T22:50:52.203119+00:00 app[web.1]: ActionView::Template::Error (no implicit conversion of nil into String):
+2014-06-30T22:50:52.203136+00:00 app[web.1]:   app/mailers/user_mailer.rb:7:in `welcome_email'
+2014-06-30T22:50:52.203122+00:00 app[web.1]:     13:     <p> 
+2014-06-30T22:50:52.203131+00:00 app[web.1]:   app/models/user.rb:25:in `create_access_token'
+2014-06-30T22:50:52.203139+00:00 app[web.1]: 
+2014-06-30T22:50:52.203130+00:00 app[web.1]:     18:   </body>
+2014-06-30T22:50:52.203140+00:00 app[web.1]: 
+2014-06-30T22:50:52.203137+00:00 app[web.1]:   app/controllers/users_controller.rb:18:in `mail_out'
+Kyles-Mac-mini:STOCK0COM macmini$ 
+
+
+
+Email link
+
+Non visible user database
+
+stock info.
