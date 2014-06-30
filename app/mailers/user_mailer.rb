@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
   	@user = user
   	@url = 'http://glacial-eyrie-4756.herokuapp.com'
-    @unsub = unsubscribe_url(@user.access_token)
+#    @unsub = unsubscribe_url(@user.access_token)
   	mail(to: @user.email, subject: 'Welcome to SCHTOCK0COM')
   end
 
