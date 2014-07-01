@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
-gem 'mongoid', github: 'mongoid/mongoid'
+ruby '2.1.1'
+#gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+
 gem 'bson_ext'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

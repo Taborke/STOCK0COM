@@ -8,6 +8,7 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: 'Welcome to SCHTOCK0COM')
   end
 
+
   def dist_day_email(days)
      #send to all users
      @dist_days = days #array of stock histories with dist days

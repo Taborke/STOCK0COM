@@ -9,6 +9,7 @@ class User
 
   # Verifier based on our application secret
   def self.verifier
+    
     ActiveSupport::MessageVerifier.new(STOCK0COM::Application.config.secret_token)
   end
 
@@ -21,7 +22,7 @@ class User
   end
 
   # Class method for token generation
-  def self.create_access_token(user)
-    verifier.generate(user.id)
+  def self.create_access_token(user)        
+    User.verifier.generate(user.id)    
   end
 end

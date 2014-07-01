@@ -15,6 +15,7 @@ Bundler.require(*Rails.groups)
 
 module STOCK0COM
   class Application < Rails::Application
+    config.secret_token = 'e0dc8e47364088a09050ec95b0dceefdde343430d52180f1e6b2d1e833b2b570e704e4ccfdfb74fd65019ce13ff218b7db0b99161f47b67728632f32c9bff103'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

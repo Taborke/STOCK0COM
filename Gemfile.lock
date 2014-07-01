@@ -1,10 +1,10 @@
 GIT
-  remote: git://github.com/mongoid/mongoid.git
-  revision: 1261bc8a0989eeff0a977d12351a8e82ed1bf9a3
+  remote: https://github.com/mongoid/mongoid.git
+  revision: e01daa73623520716d62b7513bda10e978e0d583
   specs:
-    mongoid (4.0.0.rc1)
+    mongoid (4.0.0)
       activemodel (~> 4.0)
-      moped (~> 2.0.0.rc1)
+      moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
@@ -68,7 +68,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.3.4)
-    moped (2.0.0.rc1)
+    moped (2.0.0)
       bson (~> 2.2)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)

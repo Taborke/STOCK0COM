@@ -52,3 +52,8 @@ task :distribution_day_notification => :environment do
         end
    end
 end
+
+task :test_welcome => :environment do
+    @user = User.all.sample
+    UserMailer.welcome_email(@user).deliver
+end

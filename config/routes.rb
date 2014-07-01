@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, except: [:index]
   
   get 'stocks/show'
   resources :stocks do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get '/users/unsubscribe/:signature', to: 'users#unsubscribe', as: 'unsubscribe'
+  get '/unsubscribe/:signature', to: 'users#unsubscribe', as: 'unsubscribe'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
