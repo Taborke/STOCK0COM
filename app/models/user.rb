@@ -1,7 +1,10 @@
 class User
   include Mongoid::Document
   field :email, type: String
+  validates_presence_of :email
+  validates_uniqueness_of :email
 
+  
    # Access token for a user
   def access_token
     User.create_access_token(self)
