@@ -13,11 +13,9 @@ end
 
 
 task :get_todays_quote => :environment do
-    stock_index_symbols = ["%5EIXIC", "%5EGSPC", "DIA", "%5ENDX"]
-    stock_names = ["NASDAQ", "S&P", "DOW", "NAS100"]
-    stock_index_symbols.each_with_index do |symbol, index|
-        print "\n loading #{symbol}" 
-        stock = Stock.find_or_create_by(symbol: symbol, name: stock_names[index])
+
+    Stock.each do |stock|
+        print "\n loading #{stock.symbol}" 
         stock.get_historical_data(3)
     end
 
