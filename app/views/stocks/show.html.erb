@@ -18,7 +18,7 @@
     <div class='small-2 columns'><%= number_to_human(f.volume_change) %></div>
     <div class='small-2 columns'><%= f.trade_date.strftime("%m/%d/%Y  %a-%V")  %></div>
     <% if (f.dist_day == true) then %>
-        <% colr = "green" %>
+        <% colr = $success-color %>
     <% else %>
         <% colr = "black" %>
     <% end %>
