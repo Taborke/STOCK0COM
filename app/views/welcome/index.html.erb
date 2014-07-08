@@ -34,7 +34,11 @@
 			<br />
 		</div>    
 		<div class='small-2 columns'>
-			<%= stock_history.dist_day %>
+			<% if (stock_history.dist_day == true) then %>
+                <span class="success label" ><%= stock_history.dist_day %></span>
+            <% else %>
+                <%= stock_history.dist_day %>
+            <% end %>
 			<br />
 		</div>
 	</div>

@@ -5,9 +5,9 @@ This is web app for investors that are too busy to bother checking individual st
 The program will allow users to sign up through email and be notified when there is a 'Distribution Day'
 
 
-* Ruby version 2.1.1
+* Ruby version 2.1.2
 * Rails Version 4.1
-
+ 
     Using MongoDB
         and the 
     Yahoo Finance API
@@ -30,3 +30,6 @@ Yahoo-Finance Gem
 
 Unsubscribe Link 
 	http://ngauthier.com/2013/01/rails-unsubscribe-with-active-support-message-verifier.html
+
+Foundation Docs
+	http://foundation.zurb.com/docs/

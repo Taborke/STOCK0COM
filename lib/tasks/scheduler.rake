@@ -7,7 +7,7 @@ task :load_stock_history => :environment  do
 	stock_index_symbols.each_with_index do |symbol, index|
 		print "\n loading #{symbol}" 
 		stock = Stock.find_or_create_by(symbol: symbol, name: stock_names[index])
-		stock.get_historical_data(100)
+		stock.get_historical_data(200)
 	end
 end
 
