@@ -5,7 +5,7 @@ This is web app helps investors save time by checking a stock index.
 The program will allow users to sign up through email and be notified when there is a 'Distribution Day' where more stocks are being sold than bought that day, resulting in a market loss.
 
 
-* Ruby version 2.1.2
+* Ruby Version 2.1.2
 * Rails Version 4.1
  
     Using MongoDB
@@ -13,7 +13,7 @@ The program will allow users to sign up through email and be notified when there
     Yahoo Finance API
 
 The DB will hold stock information about the Stock Indices, such as NASDAQ, DOW, S&P.
-Distribution days occur when there is a negative percent change of greater than 3%
+Distribution days occur when there is a negative percent change of greater than 0.3%
 and the volume traded is one stock higher than yesterday.
 A large number of these days can help predict a 'market correction' follow-through day at a market bottom.
 
