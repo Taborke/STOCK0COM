@@ -1,8 +1,8 @@
 == README
 
-This is web app for investors that are too busy to bother checking individual stocks
+This is web app helps investors save time by checking a stock index.
 
-The program will allow users to sign up through email and be notified when there is a 'Distribution Day'
+The program will allow users to sign up through email and be notified when there is a 'Distribution Day' where more stocks are being sold than bought that day, resulting in a market loss.
 
 
 * Ruby version 2.1.2
@@ -15,9 +15,7 @@ The program will allow users to sign up through email and be notified when there
 The DB will hold stock information about the Stock Indices, such as NASDAQ, DOW, S&P.
 Distribution days occur when there is a negative percent change of greater than 3%
 and the volume traded is one stock higher than yesterday.
-A large number of these days can signify a follow through day at a market bottom.
-
-<tt>TINY TEXT</tt>.
+A large number of these days can help predict a 'market correction' follow-through day at a market bottom.
 
 Currently Hosted with HEROKU!
 
@@ -25,11 +23,17 @@ http://glacial-eyrie-4756.herokuapp.com/ | git@heroku.com:glacial-eyrie-4756.git
 
 Citations:
 
-Yahoo-Finance Gem
+	Yahoo-Finance Gem
 	https://github.com/herval/yahoo-finance
 
-Unsubscribe Link 
+	Unsubscribe Link 
 	http://ngauthier.com/2013/01/rails-unsubscribe-with-active-support-message-verifier.html
 
-Foundation Docs
+	Foundation Docs
 	http://foundation.zurb.com/docs/
+
+	Mentor Danny Orthwein
+	https://github.com/dorthwein
+	A great help, guiding me through the best methods and structure. Also trouble shooting when an immovable object meets an unstopable force.
+
+<tt>TINY TEXT</tt>.
