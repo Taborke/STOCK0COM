@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
 			@market_closed = "Open"
 		end
 		@stocks = []
+		#this puts each stock in an array to display on the front page of the site
         Stock.all.each do |stock|
         last_stock = StockHistory.where(stock: stock).asc(:trade_date).last
         unless last_stock.nil?

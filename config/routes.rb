@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  #this directs each user's unsubscribe link to the unsubscribe action
+  # using the user's signature (access token)
   get '/unsubscribe/:signature', to: 'users#unsubscribe', as: 'unsubscribe'
 
   # Example of regular route:

@@ -2,6 +2,7 @@ class UserMailer < ActionMailer::Base
   default from: "SCHTOCK0COM"
 
   def welcome_email(user)
+    #welcome email sent when a user is created
   	@user = user
   	@url = 'http://glacial-eyrie-4756.herokuapp.com'
   	mail(to: @user.email, subject: 'Welcome to SCHTOCK0COM')
@@ -9,7 +10,7 @@ class UserMailer < ActionMailer::Base
 
 
   def dist_day_email(days)
-     #send to all users
+     #sent to all users when a distribution day occurs
      @dist_days = days #array of stock histories with dist days
      @stock = @dist_days.last.stock
      @stock = @stock.name

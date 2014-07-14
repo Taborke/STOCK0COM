@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save!
-        
+        #welcome email
         UserMailer.welcome_email(@user).deliver
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }

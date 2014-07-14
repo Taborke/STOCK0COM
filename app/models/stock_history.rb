@@ -10,4 +10,5 @@ class StockHistory
 	field :volume_change,  type: Float
 	field :trade_date,     type: DateTime
 
+	#may add follow through day boolean and last_dday_date
 end
